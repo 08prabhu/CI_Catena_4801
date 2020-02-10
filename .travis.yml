@@ -9,7 +9,7 @@
 #     See LICENSE file accompanying this project.
 #
 # Author:
-#     Terry Moore, MCCI Corporation   February 2019
+#     Prabhu Srinivasan, MCCI Corporation   February 2020
 #
 ##############################################################################
 
@@ -21,12 +21,6 @@ env:
  global:
   - IDE_VERSION=1.8.10
  matrix:
-  - TARGET=samd REGION=us915
-  - TARGET=samd REGION=eu868
-  - TARGET=samd REGION=au915
-  - TARGET=samd REGION=as923
-  - TARGET=samd REGION=as923jp
-  - TARGET=samd REGION=in866
   - TARGET=stm32l0 REGION=us915
   - TARGET=stm32l0 REGION=eu868
   - TARGET=stm32l0 REGION=au915
