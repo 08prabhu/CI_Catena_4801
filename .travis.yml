@@ -125,7 +125,7 @@ install:
  #- "echo $(_samdopts) $(_samdopts '' projcfg)"
 
 script:
- - _testsketch stm32l0_pwrtest.ino  mcci_catena_4810 "$REGION"
+ - _testsketch stm32l0_pwrtest mcci_catena_4810 "$REGION"
  
 
 ### end of file ###
