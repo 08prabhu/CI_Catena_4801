@@ -58,7 +58,7 @@ before_install:
   #
   # Changes to the BSP may break this build, sorry!
   #
-  - "function _samdopts { echo '--board' mcci:samd:${1:-mcci_catena_4450}:lorawan_region=${2:-us915} ; }"
+  #- "function _samdopts { echo '--board' mcci:samd:${1:-mcci_catena_4450}:lorawan_region=${2:-us915} ; }"
   - export MCCI_STM32_OPTS="--pref recipe.hooks.objcopy.postobjcopy.1.pattern=true"
   - "function _stm32l0opts { echo '--board' mcci:stm32:${1:-mcci_catena_4612}:lorawan_region=${2:-us915},opt=${3:-osstd},xserial=${4:-generic},upload_method=${6:-STLink},sysclk=${7:-pll32m} $MCCI_STM32_OPTS ; }"
 
@@ -91,7 +91,7 @@ before_install:
   - arduino --pref "boardsmanager.additional.urls=$BSPMCCI" --save-prefs
 
   # return platform for board
-  - 'function _getplatform { case "$1" in mcci_catena_44*) echo samd;; mcci_catena_45*) echo stm32l0;; mcci_catena_461*) echo stm32l0;; mcci_catena_48*) echo stm32l0;; *) echo unknown;; esac; }'
+  - 'function _getplatform { case "$1" in mcci_catena_44*) echo samd;; mcci_catena_45*) echo stm32l0;; mcci_catena_461*) echo stm32l0;; mcci_catena_480*) echo stm32l0;; *) echo unknown;; esac; }'
   - 'function _opts { if [ "$TARGET" = "samd" ]; then _samdopts "$@" ; elif [ "$TARGET" = "stm32l0" ]; then _stm32l0opts "$@" ; fi ; }'
 
   # compile sketch if reasonable for this platform
@@ -125,7 +125,7 @@ install:
  #- "echo $(_samdopts) $(_samdopts '' projcfg)"
 
 script:
- - _testsketch stm32l0_pwrtest mcci_catena_4612 "$REGION"
+ - _testsketch stm32l0_pwrtest  mcci_catena_4612 "$REGION"
  
 
 ### end of file ###
