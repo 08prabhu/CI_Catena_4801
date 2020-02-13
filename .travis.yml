@@ -95,7 +95,7 @@ before_install:
   - 'function _opts { if [ "$TARGET" = "samd" ]; then _samdopts "$@" ; elif [ "$TARGET" = "stm32l0" ]; then _stm32l0opts "$@" ; fi ; }'
 
   # compile sketch if reasonable for this platform
-  - 'function _testsketch { echo "_testsketch" "$@"; local S="$1"; shift; local B="$1" ; shift ; local BDTARGET="$(_getplatform "$B")"; if [ ! -f "$S"/"$S".ino ]; then echo "No sketch:" "$S/$S".ino ; false; elif [ "$BDTARGET" = "$TARGET" ]; then echo arduino --verify $(_opts "$B" "$@") "$S"/"$S".ino; arduino --verify $(_opts "$B" "$@") "$S"/"$S".ino ; else echo "skip" "$@"; fi ; }'
+  - 'function _testsketch { echo "_testsketch" "$@"; local S="$1"; shift; local B="$1" ; shift ; local BDTARGET="$(_getplatform "$B")"; if [ ! -f "$S".ino ]; then echo "No sketch:" "$S".ino ; false; elif [ "$BDTARGET" = "$TARGET" ]; then echo arduino --verify $(_opts "$B" "$@") "$S".ino; arduino --verify $(_opts "$B" "$@") "$S"/"$S".ino ; else echo "skip" "$@"; fi ; }'
 
 install:
  - _clonelib github.com mcci-catena/Adafruit_BME280_Library
